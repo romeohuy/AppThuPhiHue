@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Databases\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Dapper" Version="2.0.35" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="3.1.5" />
+    <PackageReference Include="SqlKata" Version="2.2.0" />
+    <PackageReference Include="SqlKata.Execution" Version="2.2.0" />
+    <PackageReference Include="System.Data.SQLite" Version="1.0.113.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Databases\ThongKeDatabase.db">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>
