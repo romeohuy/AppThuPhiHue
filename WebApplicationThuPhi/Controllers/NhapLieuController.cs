@@ -12,7 +12,7 @@ namespace WebApplicationThuPhi.Controllers
     public class NhapLieuController : Controller
     {
         private SoLieuNhapLieuService _soLieuNhapLieuService = new SoLieuNhapLieuService();
-
+        private DanhMucSanPhamService _danhMucSanPhamService = new DanhMucSanPhamService();
         private DonViService _donViService = new DonViService();
         // GET: NhapLieu
         public ActionResult Index()
@@ -49,7 +49,12 @@ namespace WebApplicationThuPhi.Controllers
         public JsonResult GetDonVis(string term)
         {
             var donViDoanhNghieps = _donViService.GetDonViDoanhNghieps().Where(_=>_.TenTimKiem.ToLower().Contains(term.ToLower())).OrderBy(_=>_.TenTimKiem);
-            return Json(donViDoanhNghieps.Select(_=> new { TenTimKiem = _.TenTimKiem, MaDonVi = _.Id }), JsonRequestBehavior.AllowGet);
+            return Json(donViDoanhNghieps.Select(_=> new { TenTimKiem = _.TenDonVi, MaDonVi = _.Id }), JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult GetSanPhams(string term)
+        {
+            var sanPhams = _danhMucSanPhamService.GetDanhMucSanPhams().Where(_=>_.TenTimKiem.ToLower().Contains(term.ToLower())).OrderBy(_=>_.TenTimKiem);
+            return Json(sanPhams.Select(_=> new { TenTimKiem = _.TenSanPham, MaSanPham = _.Id }), JsonRequestBehavior.AllowGet);
         }
     }
 }

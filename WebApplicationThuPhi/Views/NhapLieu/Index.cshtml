@@ -80,16 +80,16 @@
 {
     @Scripts.Render("~/bundles/jqueryui")  
     @Styles.Render("~/Content/cssjqryUi")   
-    <script>
-        $(document).ready(function () {  
-            $('input[type=datetime]').datepicker({  
-                dateFormat: "dd/M/yy",  
-                changeMonth: true,  
-                changeYear: true,  
-                yearRange: "-60:+0"  
-            });  
-  
-        });   
+<script>
+        $(document).ready(function () {
+            $('input[type=datetime]').datepicker({
+                dateFormat: "dd/M/yy",
+                changeMonth: true,
+                changeYear: true,
+                yearRange: "-60:+0"
+            });
+
+        });
 
         $(document).ready(function() {
             $("#TenDonVi").autocomplete({
@@ -112,6 +112,27 @@
                     $(this).val(i.item.label);
                 }
             });
+
+            $("#TenSanPham").autocomplete({
+                source: function(request, response) {
+                    $.ajax({
+                        url: "@Url.Action("GetSanPhams","NhapLieu")",
+                        type: "GET",
+                        data: { term: request.term },
+                        dataType: "json",
+                        success: function(data) {
+                            response($.map(data,
+                                function(item) {
+                                    return { label: item.TenTimKiem, val: item.MaSanPham };
+                                }));
+                        }
+                    });
+                },
+                select: function (e, i) {
+                    $("#MaSanPham").val(i.item.val);
+                    $(this).val(i.item.label);
+                }
+            });
         });
-    </script>
+</script>
 }

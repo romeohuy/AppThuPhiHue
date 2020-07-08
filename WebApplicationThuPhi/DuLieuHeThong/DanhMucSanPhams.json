@@ -1,3 +1,16 @@
 {
-
+  "danhMucSanPham": [
+    {
+      "id": "010a94de-7f4b-4ff2-ad02-b19ff40ff234",
+      "maSanPham": "qweqw",
+      "tenSanPham": "eqweqw",
+      "tenTimKiem": "qweqw - eqweqw"
+    },
+    {
+      "id": "010a94de-7f4b-4ff2-ad02-b19ff40ff235",
+      "maSanPham": "eqwdqw",
+      "tenSanPham": "ddq",
+      "tenTimKiem": "eqwdqw - ddq"
+    }
+  ]
 }
