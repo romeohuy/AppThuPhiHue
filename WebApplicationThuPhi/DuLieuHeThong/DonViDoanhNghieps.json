@@ -1,0 +1,16 @@
+{
+  "donViDoanhNghiep": [
+    {
+      "id": "efc5ff26-4da9-4bf9-b704-20fc97b95ca5",
+      "maDonVi": "DV1",
+      "tenDonVi": "TNHH thành công",
+      "tenTimKiem": "DV1 - TNHH thành công"
+    },
+    {
+      "id": "efc5ff26-4da9-4bf9-b704-20fc97b95ca6",
+      "maDonVi": "DV2",
+      "tenDonVi": "Phát tài",
+      "tenTimKiem": "DV2 - Phát tài"
+    }
+  ]
+}

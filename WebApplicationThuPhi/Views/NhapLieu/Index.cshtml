@@ -1,0 +1,117 @@
+﻿@using WebApplicationThuPhi.Models
+@model IEnumerable<ThuVien.Core.Models.SoLieuNhapLieu>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<div>
+    @Html.Partial("Create",new NhapLieuModel{ LoaiPhis = new List<SelectListItem>()
+    {
+        new SelectListItem(){ Selected = true,Text = "XK",Value = "XK"},
+        new SelectListItem(){ Selected = false,Text = "NK",Value = "NK"}
+    },
+    NgayNhap = DateTime.Now,
+    MaHD = (long)ViewBag.SoHD
+})
+</div>
+<table class="table">
+    <tr>
+        
+        <th>
+            @Html.DisplayNameFor(model => model.MaHD)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TenDonVi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TenSanPham)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SoTien)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GhiChu)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LoaiPhi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NgayNhap)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.MaHD)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TenDonVi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TenSanPham)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SoTien)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GhiChu)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LoaiPhi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NgayNhap)
+        </td>
+        <td>
+            
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryui")  
+    @Styles.Render("~/Content/cssjqryUi")   
+    <script>
+        $(document).ready(function () {  
+            $('input[type=datetime]').datepicker({  
+                dateFormat: "dd/M/yy",  
+                changeMonth: true,  
+                changeYear: true,  
+                yearRange: "-60:+0"  
+            });  
+  
+        });   
+
+        $(document).ready(function() {
+            $("#TenDonVi").autocomplete({
+                source: function(request, response) {
+                    $.ajax({
+                        url: "@Url.Action("GetDonVis","NhapLieu")",
+                        type: "GET",
+                        data: { term: request.term },
+                        dataType: "json",
+                        success: function(data) {
+                            response($.map(data,
+                                function(item) {
+                                    return { label: item.TenTimKiem, val: item.MaDonVi };
+                                }));
+                        }
+                    });
+                },
+                select: function (e, i) {
+                    $("#MaDonVi").val(i.item.val);
+                    $(this).val(i.item.label);
+                }
+            });
+        });
+    </script>
+}
