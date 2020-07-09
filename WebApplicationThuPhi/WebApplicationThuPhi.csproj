@@ -184,12 +184,6 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="DuLieuHeThong\DanhMucSanPhams.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="DuLieuHeThong\DonViDoanhNghieps.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -226,9 +220,13 @@
     <Content Include="Views\DanhMucSanPham\Edit.cshtml" />
     <Content Include="Views\DanhMucSanPham\Create.cshtml" />
     <Content Include="Views\ThongKe\Index.cshtml" />
+    <Content Include="TemplateFiles\TemplateFile.xlsx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="DuLieuHeThong\" />
     <Folder Include="XuatFiles\" />
   </ItemGroup>
   <ItemGroup>

@@ -34,14 +34,21 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EPPlus, Version=4.5.3.3, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <HintPath>..\PhanMemThuPhi\packages\EPPlus.4.5.3.3\lib\net40\EPPlus.dll</HintPath>
+    </Reference>
     <Reference Include="JsonFlatFileDataStore, Version=2.2.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\PhanMemThuPhi\packages\JsonFlatFileDataStore.2.2.2\lib\netstandard2.0\JsonFlatFileDataStore.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\PhanMemThuPhi\packages\Newtonsoft.Json.12.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="PresentationCore" />
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -59,6 +66,7 @@
     <Compile Include="Services\SoLieuNhapLieuService.cs" />
     <Compile Include="Services\DonViService.cs" />
     <Compile Include="Models\SoLieuNhapLieu.cs" />
+    <Compile Include="Services\ThongKeService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
