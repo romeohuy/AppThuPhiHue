@@ -9,6 +9,7 @@ using WebApplicationThuPhi.Models;
 
 namespace WebApplicationThuPhi.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class NhapLieuController : Controller
     {
         private SoLieuNhapLieuService _soLieuNhapLieuService = new SoLieuNhapLieuService();
@@ -39,6 +40,16 @@ namespace WebApplicationThuPhi.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult Edit(string id)
+        {
+            return View(_soLieuNhapLieuService.GetSoLieuNhapLieuById(id));
+        }
+        [HttpPost]
+        public ActionResult Edit(SoLieuNhapLieu model)
+        {
+            _soLieuNhapLieuService.Update(model);
+            return RedirectToAction("Index");
+        }
         [HttpGet]
         public ActionResult Delete(string id)
         {

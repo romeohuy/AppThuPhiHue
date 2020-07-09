@@ -8,6 +8,7 @@ using ThuVien.Core.Services;
 
 namespace WebApplicationThuPhi.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class DonViController : Controller
     {
         private DonViService _donViService = new DonViService();

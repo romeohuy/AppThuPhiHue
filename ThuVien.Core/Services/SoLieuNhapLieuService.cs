@@ -33,7 +33,7 @@ namespace ThuVien.Core.Services
             {
                 return _dataStore.GetCollection<SoLieuNhapLieu>().AsQueryable().Where(_=>_.MaPhien == maPhien).ToList();
             }
-            return _dataStore.GetCollection<SoLieuNhapLieu>().AsQueryable().ToList();
+            return _dataStore.GetCollection<SoLieuNhapLieu>().AsQueryable().OrderByDescending(_=>_.MaHD).ToList();
         }
         public List<SoLieuNhapLieu> GetSoLieuNhapLieuHienTai()
         {
@@ -69,6 +69,12 @@ namespace ThuVien.Core.Services
         {
             var collection = LoadData();
             return collection.Find(e=>e.MaHD == soHD).FirstOrDefault();
+        }
+
+        public SoLieuNhapLieu GetSoLieuNhapLieuById(string id)
+        {
+            var collection = LoadData();
+            return collection.Find(e=>e.Id == id).FirstOrDefault();
         }
 
         public void Insert(SoLieuNhapLieu SoLieuNhapLieu)

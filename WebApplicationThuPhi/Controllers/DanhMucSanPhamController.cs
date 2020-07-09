@@ -8,6 +8,7 @@ using ThuVien.Core.Services;
 
 namespace WebApplicationThuPhi.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class DanhMucSanPhamController : Controller
     {
         private DanhMucSanPhamService _danhMucSanPhamService = new DanhMucSanPhamService();

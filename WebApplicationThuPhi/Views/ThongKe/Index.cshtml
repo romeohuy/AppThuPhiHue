@@ -1,4 +1,5 @@
-﻿@model WebApplicationThuPhi.Models.ExportModel
+﻿@using WebApplicationThuPhi.Models
+@model IEnumerable<ThuVien.Core.Models.SoLieuNhapLieu>
 
 @{
     ViewBag.Title = "Index";
@@ -7,59 +8,75 @@
 
 <h2>Index</h2>
 
+<div>
+    @Html.Partial("_PartialThongKe", new ExportModel() { fromDate = DateTime.Now, toDate = DateTime.Now })
+</div>
+<div>
+    <h3>Tổng tiền: <span>@Model.Sum(_ => _.SoTien).ToString("##,###")</span></h3>
+</div>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.MaHD)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TenDonVi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TenSanPham)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SoTien)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GhiChu)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LoaiPhi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NgayNhap)
+        </th>
+        <th></th>
+    </tr>
 
-@using (Html.BeginForm("Export", "ThongKe"))
-{
-    @Html.AntiForgeryToken()
+    @foreach (var item in Model)
+    {
+        <tr>
 
-    <div class="form-horizontal">
-        <h4>ExportModel</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.TenFile, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.TenFile, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.TenFile, "", new { @class = "text-danger" })
-            </div>
-        </div>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaHD)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenDonVi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenSanPham)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SoTien)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GhiChu)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LoaiPhi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NgayNhap)
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Edit", "NhapLieu", new { id = item.Id }, null) |
+                @Html.ActionLink("Delete", "Delete", "NhapLieu", new { id = item.Id }, null)
+            </td>
+        </tr>
+    }
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.fromDate, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.fromDate, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.fromDate, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.toDate, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.toDate, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.toDate, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.TenNguoiThu, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.TenNguoiThu, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.TenNguoiThu, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
-        </div>
-    </div>
-}
+</table>
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    <h3>Tổng tiền: <span>@Model.Sum(_ => _.SoTien).ToString("##,###")</span></h3>
 </div>
-
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
     @Scripts.Render("~/bundles/jqueryui")

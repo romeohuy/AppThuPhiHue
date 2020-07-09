@@ -120,15 +120,18 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\SimpleConfigurationPrincipal.cs" />
     <Compile Include="Controllers\DanhMucSanPhamController.cs" />
     <Compile Include="Controllers\DonViController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LogonController.cs" />
     <Compile Include="Controllers\NhapLieuController.cs" />
     <Compile Include="Controllers\ThongKeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\ExportModel.cs" />
+    <Compile Include="Models\LogonModel.cs" />
     <Compile Include="Models\NhapLieuModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -219,10 +222,14 @@
     <Content Include="Views\DanhMucSanPham\Index.cshtml" />
     <Content Include="Views\DanhMucSanPham\Edit.cshtml" />
     <Content Include="Views\DanhMucSanPham\Create.cshtml" />
-    <Content Include="Views\ThongKe\Index.cshtml" />
+    <Content Include="Views\ThongKe\Export.cshtml" />
     <Content Include="TemplateFiles\TemplateFile.xlsx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Views\Logon\Index.cshtml" />
+    <Content Include="Views\ThongKe\Index.cshtml" />
+    <Content Include="Views\ThongKe\_PartialThongKe.cshtml" />
+    <Content Include="Views\NhapLieu\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
