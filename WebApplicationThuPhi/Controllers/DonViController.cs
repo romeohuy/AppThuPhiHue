@@ -37,6 +37,7 @@ namespace WebApplicationThuPhi.Controllers
         [HttpPost]
         public ActionResult Edit(DonViDoanhNghiep model)
         {
+            model.TenTimKiem = $"{model.MaDonVi} - {model.TenDonVi}";
             _donViService.Update(model);
             return RedirectToAction("Index");
         }
