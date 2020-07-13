@@ -51,7 +51,7 @@ namespace ThuVien.Core.Services
                 LoadData();
             }
 
-            return _dataStore.GetCollection<SoLieuNhapLieu>().AsQueryable().ToList().Where(_=>_.NgayNhap.Date >= fromDate.Date && _.NgayNhap.Date <= today.Date).ToList();
+            return _dataStore.GetCollection<SoLieuNhapLieu>().AsQueryable().ToList().Where(_=>_.NgayNhap.Date >= fromDate.Date && _.NgayNhap.Date <= today.Date).OrderBy(_=>_.MaHD).ToList();
         }
 
         public long GetMaxMaHD()
