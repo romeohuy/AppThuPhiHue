@@ -1,9 +1,7 @@
-﻿using System;
+﻿using JsonFlatFileDataStore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using JsonFlatFileDataStore;
 using ThuVien.Core.Models;
 
 namespace ThuVien.Core.Services
@@ -31,9 +29,9 @@ namespace ThuVien.Core.Services
 
             if (string.IsNullOrEmpty(maPhien) == false)
             {
-                return _dataStore.GetCollection<SoLieuNhapLieu>().AsQueryable().Where(_=>_.MaPhien == maPhien).ToList();
+                return _dataStore.GetCollection<SoLieuNhapLieu>().AsQueryable().Where(_ => _.MaPhien == maPhien).ToList();
             }
-            return _dataStore.GetCollection<SoLieuNhapLieu>().AsQueryable().OrderByDescending(_=>_.MaHD).ToList();
+            return _dataStore.GetCollection<SoLieuNhapLieu>().AsQueryable().OrderByDescending(_ => _.MaHD).ToList();
         }
         public List<SoLieuNhapLieu> GetSoLieuNhapLieuHienTai()
         {
@@ -41,17 +39,29 @@ namespace ThuVien.Core.Services
             {
                 LoadData();
             }
-            return _dataStore.GetCollection<SoLieuNhapLieu>().AsQueryable().Where(_=>_.NgayNhap.Date == DateTime.Now.Date).OrderByDescending(_=>_.MaHD).ToList();
+            return _dataStore.GetCollection<SoLieuNhapLieu>().AsQueryable().Where(_ => _.NgayNhap.Date == DateTime.Now.Date).OrderByDescending(_ => _.MaHD).ToList();
         }
 
-        public List<SoLieuNhapLieu> GetSoLieuNhapLieusXuatFile(DateTime fromDate, DateTime today)
+        public List<SoLieuNhapLieu> GetSoLieuNhapLieusXuatFile(DateTime? fromDate, DateTime? toDate, long? fromNumber, long? toNumber)
         {
             if (_dataStore == null)
             {
                 LoadData();
             }
 
-            return _dataStore.GetCollection<SoLieuNhapLieu>().AsQueryable().ToList().Where(_=>_.NgayNhap.Date >= fromDate.Date && _.NgayNhap.Date <= today.Date).OrderBy(_=>_.MaHD).ToList();
+            if (fromNumber.HasValue && toNumber.HasValue)
+            {
+                return _dataStore.GetCollection<SoLieuNhapLieu>().AsQueryable().ToList().Where(_ => _.MaHD >= fromNumber.Value && _.MaHD <= toNumber.Value).OrderBy(_ => _.MaHD).ToList();
+            }
+
+            if (fromDate.HasValue && toDate.HasValue)
+            {
+                return _dataStore.GetCollection<SoLieuNhapLieu>().AsQueryable().ToList().Where(_ => _.NgayNhap.Date >= fromDate.Value.Date && _.NgayNhap.Date <= toDate.Value.Date).OrderBy(_ => _.MaHD).ToList();
+            }
+            else
+            {
+                return _dataStore.GetCollection<SoLieuNhapLieu>().AsQueryable().ToList();
+            }
         }
 
         public long GetMaxMaHD()
@@ -68,13 +78,13 @@ namespace ThuVien.Core.Services
         public SoLieuNhapLieu GetSoLieuNhapLieu(long soHD)
         {
             var collection = LoadData();
-            return collection.Find(e=>e.MaHD == soHD).FirstOrDefault();
+            return collection.Find(e => e.MaHD == soHD).FirstOrDefault();
         }
 
         public SoLieuNhapLieu GetSoLieuNhapLieuById(string id)
         {
             var collection = LoadData();
-            return collection.Find(e=>e.Id == id).FirstOrDefault();
+            return collection.Find(e => e.Id == id).FirstOrDefault();
         }
 
         public void Insert(SoLieuNhapLieu SoLieuNhapLieu)
@@ -82,16 +92,16 @@ namespace ThuVien.Core.Services
             var collection = LoadData();
             collection.InsertOne(SoLieuNhapLieu);
         }
-        public  void Update(SoLieuNhapLieu SoLieuNhapLieu)
+        public void Update(SoLieuNhapLieu SoLieuNhapLieu)
         {
             var collection = LoadData();
-             collection.UpdateOne(e=>e.MaHD == SoLieuNhapLieu.MaHD,SoLieuNhapLieu);
+            collection.UpdateOne(e => e.MaHD == SoLieuNhapLieu.MaHD, SoLieuNhapLieu);
         }
 
         public void Delete(string id)
         {
             var collection = LoadData();
-             collection.DeleteOne(e => e.Id == id);
+            collection.DeleteOne(e => e.Id == id);
         }
     }
 }

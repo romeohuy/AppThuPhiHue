@@ -1,11 +1,9 @@
-﻿using System;
+﻿using OfficeOpenXml;
+using OfficeOpenXml.Style;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using OfficeOpenXml;
-using OfficeOpenXml.Style;
 using ThuVien.Core.Models;
 
 namespace ThuVien.Core.Services
@@ -49,9 +47,9 @@ namespace ThuVien.Core.Services
             worksheet.Cells[rowIndex + 1, 4].Value = dataSoLieuNhapLieus.Sum(_ => _.SoTien).ToString("##,###");
             worksheet.Cells[rowIndex + 1, 4].Style.Font.Bold = true;
 
-            worksheet.Cells[rowIndex + 3, 3 ].Value = $"Quy Nhơn, ngày  tháng năm {DateTime.Now.Year}";
-            worksheet.Cells[rowIndex + 5, 3 ].Value = "Người thu tiền";
-            worksheet.Cells[rowIndex + 10, 3 ].Value = tenNguoiThu;
+            worksheet.Cells[rowIndex + 3, 3].Value = $"Quy Nhơn, ngày  tháng năm {DateTime.Now.Year}";
+            worksheet.Cells[rowIndex + 5, 3].Value = "Người thu tiền";
+            worksheet.Cells[rowIndex + 10, 3].Value = tenNguoiThu;
             worksheet.Cells[rowIndex + 10, 3].Style.Font.Bold = true;
 
 

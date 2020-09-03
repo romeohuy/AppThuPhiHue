@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using ThuVien.Core.Models;
@@ -23,7 +22,7 @@ namespace WebApplicationThuPhi.Controllers
         public ActionResult Index(ExportModel model)
         {
             var data = _soLieuNhapLieuService.GetSoLieuNhapLieusXuatFile(model.fromDate,
-                model.toDate);
+                model.toDate, model.fromNumber, model.toNumber);
 
             return View(data);
         }
@@ -38,11 +37,17 @@ namespace WebApplicationThuPhi.Controllers
         {
             var tenFile = model.TenFile + DateTime.Now.ToString("yyyyMMdd HH-mm") + ".xlsx";
             var data = _soLieuNhapLieuService.GetSoLieuNhapLieusXuatFile(model.fromDate,
-                model.toDate);
+                model.toDate, model.fromNumber, model.toNumber);
+
+            if (model.fromDate.HasValue == false || model.toDate.HasValue == false)
+            {
+                model.fromDate = data.Min(_ => _.NgayNhap);
+                model.toDate = data.Max(_ => _.NgayNhap);
+            }
 
             var filePath =
-                ThongKeService.ExportFileThongKe(tenFile, model.TenNguoiThu, model.fromDate, model.toDate, data);
-            String mimeType = MimeMapping.GetMimeMapping(filePath);
+                ThongKeService.ExportFileThongKe(tenFile, model.TenNguoiThu, model.fromDate.Value, model.toDate.Value, data);
+            var mimeType = MimeMapping.GetMimeMapping(filePath);
 
             byte[] stream = System.IO.File.ReadAllBytes(filePath);
             return File("~/XuatFiles/" + tenFile, mimeType, tenFile);

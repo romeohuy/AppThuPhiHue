@@ -1,12 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using ThuVien.Core.Models;
 using ThuVien.Core.Services;
@@ -145,10 +140,10 @@ namespace PhanMemThuPhi
             if (string.IsNullOrEmpty(labelQuanLyMaDonVi.Text))
             {
                 var dialogResult = MessageBox.Show("Bạn chưa chọn dòng chỉnh sửa", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-               if (dialogResult == DialogResult.OK)
-               {
-                   return;
-               }
+                if (dialogResult == DialogResult.OK)
+                {
+                    return;
+                }
             }
 
             var donViDoanhNghiep = _donViService.GetDonViDoanhNghiep(labelQuanLyMaDonVi.Text);
@@ -285,7 +280,7 @@ namespace PhanMemThuPhi
         {
             var tenFile = textBoxTenFile.Text + DateTime.Now.ToString("yyyyMMdd HH-mm") + ".csv";
             var data = _soLieuNhapLieuService.GetSoLieuNhapLieusXuatFile(dateTimePickerFromDate.Value,
-                dateTimePickerToDate.Value);
+                dateTimePickerToDate.Value, null, null);
 
             //before your loop
             var csv = new StringBuilder();
