@@ -30,7 +30,7 @@ namespace PhanMemThuPhi
                 TenGoiNho = $"PhienNhapLieu_{DateTime.Now.ToString("yyyy MMMM dd HH:mm")}"
             };
             _phienNhapLieuService.Insert(_phienNhapLieu);
-            _soHoaDon = _soLieuNhapLieuService.GetMaxMaHD();
+            _soHoaDon = _soLieuNhapLieuService.GetCurrentMaHD();
 
             InitializeComponent();
 

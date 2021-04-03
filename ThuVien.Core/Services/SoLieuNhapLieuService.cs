@@ -64,15 +64,15 @@ namespace ThuVien.Core.Services
             }
         }
 
-        public long GetMaxMaHD()
+        public long GetCurrentMaHD()
         {
-            var data = _dataStore.GetCollection<SoLieuNhapLieu>().AsQueryable().ToList();
-            if (data.Any() == false)
+            var data = _dataStore.GetCollection<SoLieuNhapLieu>().AsQueryable().OrderByDescending(_ => _.NgayNhap).FirstOrDefault();
+            if (data == null)
             {
                 return 0;
             }
 
-            return data.Max(_ => _.MaHD);
+            return data.MaHD;
         }
 
         public SoLieuNhapLieu GetSoLieuNhapLieu(long soHD)

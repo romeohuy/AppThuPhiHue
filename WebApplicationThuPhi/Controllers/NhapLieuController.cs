@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using ThuVien.Core.Models;
 using ThuVien.Core.Services;
@@ -18,7 +16,7 @@ namespace WebApplicationThuPhi.Controllers
         // GET: NhapLieu
         public ActionResult Index()
         {
-            ViewBag.SoHD = _soLieuNhapLieuService.GetMaxMaHD() + 1;
+            ViewBag.SoHD = _soLieuNhapLieuService.GetCurrentMaHD() + 1;
             return View(_soLieuNhapLieuService.GetSoLieuNhapLieuHienTai());
         }
         [HttpPost]
@@ -59,13 +57,13 @@ namespace WebApplicationThuPhi.Controllers
 
         public JsonResult GetDonVis(string term)
         {
-            var donViDoanhNghieps = _donViService.GetDonViDoanhNghieps().Where(_=>_.TenTimKiem.ToLower().Contains(term.ToLower())).OrderBy(_=>_.TenTimKiem);
-            return Json(donViDoanhNghieps.Select(_=> new { TenTimKiem = _.TenDonVi, MaDonVi = _.Id }), JsonRequestBehavior.AllowGet);
+            var donViDoanhNghieps = _donViService.GetDonViDoanhNghieps().Where(_ => _.TenTimKiem.ToLower().Contains(term.ToLower())).OrderBy(_ => _.TenTimKiem);
+            return Json(donViDoanhNghieps.Select(_ => new { TenTimKiem = _.TenDonVi, MaDonVi = _.Id }), JsonRequestBehavior.AllowGet);
         }
         public JsonResult GetSanPhams(string term)
         {
-            var sanPhams = _danhMucSanPhamService.GetDanhMucSanPhams().Where(_=>_.TenTimKiem.ToLower().Contains(term.ToLower())).OrderBy(_=>_.TenTimKiem);
-            return Json(sanPhams.Select(_=> new { TenTimKiem = _.TenSanPham, MaSanPham = _.Id }), JsonRequestBehavior.AllowGet);
+            var sanPhams = _danhMucSanPhamService.GetDanhMucSanPhams().Where(_ => _.TenTimKiem.ToLower().Contains(term.ToLower())).OrderBy(_ => _.TenTimKiem);
+            return Json(sanPhams.Select(_ => new { TenTimKiem = _.TenSanPham, MaSanPham = _.Id }), JsonRequestBehavior.AllowGet);
         }
     }
 }
