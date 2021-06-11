@@ -1,11 +1,11 @@
 ﻿@model WebApplicationThuPhi.Models.TinhTienModel
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Trang tính tiền";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h3>Trang tính tiền</h3>
 
 
 @using (Html.BeginForm())
@@ -13,7 +13,7 @@
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>TinhTienModel</h4>
+        
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
