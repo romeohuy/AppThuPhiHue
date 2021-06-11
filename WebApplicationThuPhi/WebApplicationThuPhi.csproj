@@ -127,12 +127,14 @@
     <Compile Include="Controllers\LogonController.cs" />
     <Compile Include="Controllers\NhapLieuController.cs" />
     <Compile Include="Controllers\ThongKeController.cs" />
+    <Compile Include="Controllers\TinhTienController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\ExportModel.cs" />
     <Compile Include="Models\LogonModel.cs" />
     <Compile Include="Models\NhapLieuModel.cs" />
+    <Compile Include="Models\TinhTienModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -230,6 +232,7 @@
     <Content Include="Views\ThongKe\Index.cshtml" />
     <Content Include="Views\ThongKe\_PartialThongKe.cshtml" />
     <Content Include="Views\NhapLieu\Edit.cshtml" />
+    <Content Include="Views\TinhTien\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

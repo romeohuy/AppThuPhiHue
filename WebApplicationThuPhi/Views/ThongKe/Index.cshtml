@@ -2,11 +2,11 @@
 @model IEnumerable<ThuVien.Core.Models.SoLieuNhapLieu>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Thống kê";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Thống kê</h2>
 
 <div>
     @Html.Partial("_PartialThongKe", new ExportModel() { fromDate = DateTime.Now, toDate = DateTime.Now })

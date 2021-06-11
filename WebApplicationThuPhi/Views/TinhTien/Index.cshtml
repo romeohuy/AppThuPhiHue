@@ -1,0 +1,216 @@
+﻿@model WebApplicationThuPhi.Models.TinhTienModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>TinhTienModel</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.Label("Mệnh giá", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.Label("Số tờ", htmlAttributes: new { @class = "control-label col-md-3 text-left" })
+            @Html.Label("Thành tiền", htmlAttributes: new { @class = "control-label col-md-3" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Soto500k, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-3">
+                @Html.EditorFor(model => model.Soto500k, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Soto500k, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-3">
+                @Html.TextBox("Total500k", null, new { @class = "form-control", disabled = "disable" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Soto200k, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-3">
+                @Html.EditorFor(model => model.Soto200k, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Soto200k, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-3">
+                @Html.TextBox("Total200k", null, new { @class = "form-control", disabled = "disable" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Soto100k, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-3">
+                @Html.EditorFor(model => model.Soto100k, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Soto100k, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-3">
+                @Html.TextBox("Total100k", null, new { @class = "form-control", disabled = "disable" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Soto50k, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-3">
+                @Html.EditorFor(model => model.Soto50k, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Soto50k, "", new { @class = "text-danger" })
+            </div><div class="col-md-3">
+                @Html.TextBox("Total50k", null, new { @class = "form-control", disabled = "disable" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Soto20k, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-3">
+                @Html.EditorFor(model => model.Soto20k, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Soto20k, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-3">
+                @Html.TextBox("Total20k", null, new { @class = "form-control", disabled = "disable" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Soto10k, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-3">
+                @Html.EditorFor(model => model.Soto10k, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Soto10k, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-3">
+                @Html.TextBox("Total10k", null, new { @class = "form-control", disabled = "disable" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Soto5k, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-3">
+                @Html.EditorFor(model => model.Soto5k, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Soto5k, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-3">
+                @Html.TextBox("Total5k", null, new { @class = "form-control", disabled = "disable" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Soto2k, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-3">
+                @Html.EditorFor(model => model.Soto2k, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Soto2k, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-3">
+                @Html.TextBox("Total2k", null, new { @class = "form-control", disabled = "disable" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Soto1k, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-3">
+                @Html.EditorFor(model => model.Soto1k, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Soto1k, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-3">
+                @Html.TextBox("Total1k", null, new { @class = "form-control", disabled = "disable" })
+            </div>
+        </div>
+        <hr />
+        <div class="form-group">
+            @Html.Label("", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.Label("Tổng cộng:", htmlAttributes: new { @class = "control-label col-md-3 text-left" })
+            <div class="col-md-3">
+                @Html.TextBox("TotalAmount", null, new { @class = "form-control", disabled = "disable" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.Label("", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.Label("Số tiền nộp:", htmlAttributes: new { @class = "control-label col-md-3 text-left" })
+            <div class="col-md-3">
+                @Html.TextBox("TienNop", 0, new { @class = "form-control text-box" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.Label("", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.Label("Còn lại:", htmlAttributes: new { @class = "control-label col-md-3 text-left" })
+            <div class="col-md-3">
+                @Html.TextBox("ConLai", null, new { @class = "form-control", disabled = "disable" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-3">
+                @*<input id="btnTinhToan" type="button" value="Tính" class="btn btn-success" />*@
+                <a type="button" href="@Request.RawUrl" value="Làm mới" class="btn btn-danger" >Làm mới</a>
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+    function formatMoney(number) {
+        return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+
+    $(document).ready(function () {
+        $('.text-box').change(function() {
+            try {
+                var soto500k = parseInt($("#@Html.IdFor(m=>m.Soto500k)").val());
+                var soto200k = parseInt($("#@Html.IdFor(m=>m.Soto200k)").val());
+                var soto100k = parseInt($("#@Html.IdFor(m=>m.Soto100k)").val());
+                var soto50k = parseInt($("#@Html.IdFor(m=>m.Soto50k)").val());
+                var soto20k = parseInt($("#@Html.IdFor(m=>m.Soto20k)").val());
+                var soto10k = parseInt($("#@Html.IdFor(m=>m.Soto10k)").val());
+                var soto5k = parseInt($("#@Html.IdFor(m=>m.Soto5k)").val());
+                var soto2k = parseInt($("#@Html.IdFor(m=>m.Soto2k)").val());
+                var soto1k = parseInt($("#@Html.IdFor(m=>m.Soto1k)").val());
+                var total500k = soto500k * 500000;
+                var total200k = soto200k * 200000;
+                var total100k = soto100k * 100000;
+                var total50k = soto50k * 50000;
+                var total20k = soto20k * 20000;
+                var total10k = soto10k * 10000;
+                var total5k = soto5k * 5000;
+                var total2k = soto2k * 2000;
+                var total1k = soto1k * 1000;
+
+                var totalAmount = total500k + total200k + total100k + total50k + total20k + total10k + total5k + total2k + total1k;
+
+
+                var tienNop = parseInt($("#TienNop").val());
+
+                var tienConLai = totalAmount - tienNop;
+
+                //Set tien
+
+                $("#Total500k").val(formatMoney(total500k));
+                $("#Total200k").val(formatMoney(total200k));
+                $("#Total100k").val(formatMoney(total100k));
+                $("#Total50k").val(formatMoney(total50k));
+                $("#Total20k").val(formatMoney(total20k));
+                $("#Total10k").val(formatMoney(total10k));
+                $("#Total5k").val(formatMoney(total5k));
+                $("#Total2k").val(formatMoney(total2k));
+                $("#Total1k").val(formatMoney(total1k));
+                $("#TotalAmount").val(formatMoney(totalAmount));
+
+                $("#ConLai").val(formatMoney(tienConLai));
+
+
+            } catch (e) {
+                alert("Lỗi rồi đại vương: " + e.message);
+            }
+        });
+
+    });
+    </script>
+}
